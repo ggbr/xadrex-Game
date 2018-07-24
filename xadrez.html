@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+
+	
+	<br>
+	<br>
+	<center>
+		<table id="tabuleiro" ></table>
+	</center>
+<style>
+table{
+	border-collapse: collapse;
+}
+td{
+	height: 100px;
+	width: 100px;
+}	
+
+.black{
+	background-color: #2f3640;
+}
+
+.white{
+	background-color: #f5f6fa;
+}
+
+td:hover{
+	background-color: #0097e6;
+}
+</style>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8" async defer>
+
+
+		
+		
+
+		function renderisarTabuleito(){
+
+			for ( var i = 1; i < 9; i++) {
+				$('#tabuleiro').append(`
+					<tr id="r` + i + `">
+						<td id="a` + i +`"></td>
+						<td id="b` + i +`"></td>
+						<td id="c` + i +`"></td>
+						<td id="d` + i +`"></td>
+						<td id="e` + i +`"></td>
+						<td id="f` + i +`"></td>
+						<td id="g` + i +`"></td>
+						<td id="h` + i +`"></td>
+					</tr>
+				`);
+			}
+		}
+
+		function colorTabuleiro(){
+			let tds = $('td');
+			let cor = 0;
+
+			for(var i = 0; i < 65; i++){
+
+				switch (i) {
+					case 8:
+					case 24:
+					case 40:
+					case 56:
+						cor = 1
+						break;
+					case 16:
+					case 32:
+					case 48:
+					case 64:
+						cor = 0
+						break;
+					default:
+						break;
+				}
+
+
+				if(cor ==0){
+					$(tds[i]).addClass('white');
+					cor++;
+				}else{
+					$(tds[i]).addClass('black');
+					cor = 0;
+				}
+
+			}
+		}
+
+
+		function renderizarPecas(){
+			
+		}
+
+
+
+		function setup(){
+			renderisarTabuleito();
+			colorTabuleiro();
+			renderizarPecas();
+		}
+
+		function main(){
+
+		}
+
+		//inicia a função principal
+		setup();
+		main();
+
+
+	</script>
+</body>
+</html>
