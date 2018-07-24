@@ -57,7 +57,7 @@ td:hover{
 
 
 		
-		
+		let cols = ['a','b','c','d','e','f','g','h'];
 
 		function renderisarTabuleito(){
 
@@ -116,10 +116,12 @@ td:hover{
 		function renderizarPecas(){
 
 			// ---  renderizar peãos ---
+			for(var i = 0; i < 8; i++){
 
-			$('#a2').append('<img src="./img/j1/peao.png"> ');
+				$('#'+ cols[i] + 2).append('<img src="./img/j1/peao.png"> ');
+			}
 
-			
+
 			//-------------------------------
 		}
 
