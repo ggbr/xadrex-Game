@@ -12,7 +12,6 @@
 		<h1 class="title">Xadrez Game</h1>
 	</center>
 
-	<hr>
 	<br>
 
 	<center>
@@ -21,35 +20,49 @@
 		</div>
 	</center>
 <style>
-table{
-	border-collapse: collapse;
-}
-td{
-	height: 100px;
-	width: 100px;
-}	
 
-img{height: 99px;
-	width: 99px;}
+	table{
+		border-collapse: collapse;
+	}
 
-.black{
-	background-color: #718093;
-}
+	td{
+		height: 100px;
+		width: 100px;
+	}	
 
-.white{
-	background-color: #f5f6fa;
-}
-.base{
-	background-color:  #2f3640;
+	img{
+		height: 99px;
+		width: 99px;
+	}
 
-	padding: 15px;
-	display: inline-block;
+	.black{
+		background-color: #718093;
+	}
 
-}
+	.white{
+		background-color: #f5f6fa;
+	}
 
-td:hover{
-	background-color: #0097e6;
-}
+	.base{
+		background-color:  #2f3640;
+		padding: 15px;
+		display: inline-block;
+	}
+
+	td:hover{
+		background-color: #0097e6;
+	}
+
+	.ativo{
+		background-color: blue;
+	}
+	.matar{
+		background-color: red;
+	}
+
+	.ator{
+		background-color: black;
+	}
 </style>
 <body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -117,32 +130,32 @@ td:hover{
 
 			// ---  renderizar peãos ---
 			for(var i = 0; i < 8; i++){
-				$('#'+ cols[i] + 2).append('<img src="./img/j1/peao.png"> ');
+				$('#'+ cols[i] + 2).append('<img src="./img/j1/peao.png" data-peca="peao" data-cor="preta"> ');
 			}
 
 			// torrer
 
-			$('#a1').append('<img src="./img/j1/torre.png"> ');
+			$('#a1').append('<img src="./img/j1/torre.png" data-peca="torre" data-cor="preta" > ');
 
-			$('#h1').append('<img src="./img/j1/torre.png"> ');
+			$('#h1').append('<img src="./img/j1/torre.png" data-peca="torre" data-cor="preta" > ');
 
 			// cavalos 
 
-			$('#b1').append('<img src="./img/j1/cavalo.png"> ');
+			$('#b1').append('<img src="./img/j1/cavalo.png" data-peca="cavalo" data-cor="preta" > ');
 
-			$('#g1').append('<img src="./img/j1/cavalo.png"> ');
+			$('#g1').append('<img src="./img/j1/cavalo.png" data-peca="cavalo" data-cor="preta" > ');
 
 			// bispos 
 
-			$('#c1').append('<img src="./img/j1/bispo.png"> ');
+			$('#c1').append('<img src="./img/j1/bispo.png" data-peca="bispo" data-cor="preta" > ');
 
-			$('#f1').append('<img src="./img/j1/bispo.png"> ');
+			$('#f1').append('<img src="./img/j1/bispo.png" data-peca="bispo" data-cor="preta" > ');
 
 			// rei
-			$('#e1').append('<img src="./img/j1/rei.png"> ');
+			$('#e1').append('<img src="./img/j1/rei.png" data-cor="preta" data-peca="rei" > ');
 
 			// rainha
-			$('#d1').append('<img src="./img/j1/rainha.png"> ');
+			$('#d1').append('<img src="./img/j1/rainha.png" data-peca="rainha" data-cor="preta"> ');
 
 
 
@@ -152,33 +165,68 @@ td:hover{
 
 			// ---  renderizar peãos ---
 			for(var i = 0; i < 8; i++){
-				$('#'+ cols[i] + 7).append('<img src="./img/j2/peao.png"> ');
+				$('#'+ cols[i] + 7).append('<img src="./img/j2/peao.png" data-cor="branca" data-peca="peao" > ');
 			}
 
 			// torrer
 
-			$('#a8').append('<img src="./img/j2/torre.png"> ');
+			$('#a8').append('<img src="./img/j2/torre.png" data-peca="torre"  data-cor="branca" > ');
 
-			$('#h8').append('<img src="./img/j2/torre.png"> ');
+			$('#h8').append('<img src="./img/j2/torre.png" data-peca="torre" data-cor="branca" > ');
 
 			// cavalos 
 
-			$('#b8').append('<img src="./img/j2/cavalo.png"> ');
+			$('#b8').append('<img src="./img/j2/cavalo.png" data-peca="cavalo" data-cor="branca" > ');
 
-			$('#g8').append('<img src="./img/j2/cavalo.png"> ');
+			$('#g8').append('<img src="./img/j2/cavalo.png" data-peca="cavalo" data-cor="branca" > ');
 
 			// bispos 
 
-			$('#c8').append('<img src="./img/j2/bispo.png"> ');
+			$('#c8').append('<img src="./img/j2/bispo.png" data-peca="bispo"  data-cor="branca" > ');
 
-			$('#f8').append('<img src="./img/j2/bispo.png"> ');
+			$('#f8').append('<img src="./img/j2/bispo.png" data-peca="bispo" data-cor="branca" > ');
 
 			// rei
-			$('#e8').append('<img src="./img/j2/rei.png"> ');
+			$('#e8').append('<img src="./img/j2/rei.png"  data-cor="branca" data-peca="rei" > ');
 
 			// rainha
-			$('#d8').append('<img src="./img/j2/rainha.png"> ');
+			$('#d8').append('<img src="./img/j2/rainha.png" data-peca="rainha" data-cor="branca" > ');
 		}
+
+
+		function ativePeao(id, cor){
+
+			let col = cols.indexOf(id.split('')[0]);
+			let rol = id.split('')[1];
+
+			if(cor == 'branca'){
+				rederColor(""+cols[col] + (rol - 1),cor);
+			}
+
+
+
+		}
+
+
+		function rederColor(id, cor){
+
+			let posicao = $('#'+id);
+			console.log(posicao);
+			let peca = posicao.children('img');
+
+			if( posicao.html() == '' ){
+				posicao.addClass('ativo');
+
+			}else{
+
+				if(peca.data('cor') !== cor){
+					posicao.addClass('matar');
+				}
+			}
+
+		}
+
+		
 
 
 
@@ -189,6 +237,50 @@ td:hover{
 		}
 
 		function main(){
+
+			$('img').click(function(event){
+				let id = $(this).parent().attr('id');
+
+				let rol = id.split('')[1];
+				let col = id.split('')[0];
+
+				let peca = $(this).data('peca');
+				let cor  = $(this).data('cor');
+
+				let ator = $('.ator');
+
+				if(ator.html() !== 'undefined'){
+					$('.ator').removeClass('ator');
+					$('.ativo').removeClass('ativo');
+					$('.matar').removeClass('matar');
+				}
+
+
+
+				$(this).addClass('ator');
+
+				switch (peca) {
+					case 'peao':
+						ativePeao(id, cor);
+						break;
+					case 'torre':
+						alert('torre');
+						break;
+					case 'cavalo':
+						alert('cavalo');
+						break;
+					case 'bispo':
+						alert('bispo');
+						break;
+					case 'rainha':
+						alert('rainha');
+						break;
+					case 'rei':
+						alert('rei');
+						break;
+
+					
+				}	});
 
 		}
 
